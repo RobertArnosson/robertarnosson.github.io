@@ -1,3 +1,0 @@
-function sellOre(mineType, amountType) {
-    
-}

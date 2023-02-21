@@ -1,0 +1,65 @@
+#container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+
+}
+  
+#map {
+    position: relative;
+    top: 0;
+    left: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    cursor: grab;
+    overflow: hidden;
+}
+
+.marker-button {
+    position: absolute;
+    z-index: 1;
+}
+
+.marker-button-b {
+    border: 0;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 15%;
+    background-color: rgb(100, 100, 100);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.marker-button-b:hover {
+    background-color: rgb(125, 125, 125);
+}
+
+.marker-button-b:active {
+    background-color: rgb(75, 75, 75);
+}
+
+#marker-1 {
+    left: calc(100px + 500px);
+    top: calc(100px + 100px);
+}
+
+#marker-2 {
+    left: calc(100px + 200px);
+    top: calc(100px + 300px);
+}
+
+#marker-3 {
+    left: calc(100px + 200px);
+    top: calc(100px + 100px);
+}
+
+#marker-4 {
+    left: calc(100px + 200px);
+    top: calc(100px + 500px);
+}
