@@ -1,0 +1,7 @@
+.stock-details {
+    display: none;
+}
+  
+.stock-row.expanded .stock-details {
+    display: table-row;
+}

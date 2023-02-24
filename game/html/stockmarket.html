@@ -4,6 +4,7 @@
     <title>Stock Market</title>
     <link rel="stylesheet" type="text/css" href="../css/body.css">
     <link rel="stylesheet" type="text/css" href="../css/stockmarket.css">
+    <link rel="stylesheet" type="text/css" href="../css/stockmarketlistdropdown.css">
     <link rel="stylesheet" type="text/css" href="../css/infobar.css">
   </head>
   <body>
@@ -22,122 +23,221 @@
                 <th>Change</th>
                 <th>Shares</th>
                 <th>Current Holdings</th>
-                <th>Buy</th>
-                <th>Sell</th>
+                <th>Buy All</th>
                 <th>Sell All</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr class="stock-row" id="ffr-stock-row">
                 <td>Novaria</td>
                 <td>Frozen Frontier Resources (FFR)</td>
                 <td>◈ 10</td>
-                <td id="ffr-price"></td>
-                <td id="ffr-change"></td>
-                <td id="ffr-shares">0</td>
-                <td id="ffr-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(0, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(0, 1)">Sell</button></td>
+                <td id="ffr-price" onclick="dropdown('ffr')"></td>
+                <td id="ffr-change" onclick="dropdown('ffr')"></td>
+                <td id="ffr-shares" onclick="dropdown('ffr')">0</td>
+                <td id="ffr-holdings" onclick="dropdown('ffr')"></td>
+                <td><button class="stock-button" onclick="buyStock(0, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(0, 0)">Sell All</button></td>
             </tr>
-            <tr>
+            <tr class="stock-details" id="ffr-stock-details">
+                <td colspan="9" id="ffr-graf">
+                    <div class="chart" id="ffr-chart" onclick="dropdown('ffr')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(0)">-</span>
+                        <input class="input-number" id="ffr-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(0)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(0, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(0, 1)">Sell</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="stock-row" id="clt-stock-row">
                 <td>Novaria</td>
                 <td>CryoLife Technologies (CLT)</td>
                 <td>◈ 10</td>
-                <td id="clt-price"></td>
-                <td id="clt-change"></td>
-                <td id="clt-shares">0</td>
-                <td id="clt-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(1, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(1, 1)">Sell</button></td>
+                <td id="clt-price" onclick="dropdown('clt')"></td>
+                <td id="clt-change" onclick="dropdown('clt')"></td>
+                <td id="clt-shares" onclick="dropdown('clt')">0</td>
+                <td id="clt-holdings" onclick="dropdown('clt')"></td>
+                <td><button class="stock-button" onclick="buyStock(1, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(1, 0)">Sell All</button></td>
             </tr>
-            <tr>
+            <tr class="stock-details" id="clt-stock-details">
+                <td colspan="9" id="clt-graf">
+                    <div class="chart" id="clt-chart" onclick="dropdown('clt')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(1)">-</span>
+                        <input class="input-number" id="clt-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(1)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(1, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(1, 1)">Sell</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="stock-row" id="ii-stock-row">
                 <td>Novaria</td>
                 <td>Iceberg Innovations (II)</td>
                 <td>◈ 10</td>
-                <td id="ii-price"></td>
-                <td id="ii-change"></td>
-                <td id="ii-shares">0</td>
-                <td id="ii-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(2, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(2, 1)">Sell</button></td>
+                <td id="ii-price" onclick="dropdown('ii')"></td>
+                <td id="ii-change" onclick="dropdown('ii')"></td>
+                <td id="ii-shares" onclick="dropdown('ii')">0</td>
+                <td id="ii-holdings" onclick="dropdown('ii')"></td>
+                <td><button class="stock-button" onclick="buyStock(2, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(2, 0)">Sell All</button></td>
             </tr>
-            <tr>
+            <tr class="stock-details" id="ii-stock-details">
+                <td colspan="9" id="ii-graf">
+                    <div class="chart" id="ii-chart" onclick="dropdown('ii')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(2)">-</span>
+                        <input class="input-number" id="ii-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(2)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(2, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(2, 1)">Sell</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="stock-row" id="shm-stock-row">
                 <td>Aethera</td>
                 <td>SkyHarvest Mining (SHM)</td>
                 <td>◈ 20</td>
-                <td id="shm-price"></td>
-                <td id="shm-change"></td>
-                <td id="shm-shares">0</td>
-                <td id="shm-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(3, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(3, 1)">Sell</button></td>
+                <td id="shm-price" onclick="dropdown('shm')"></td>
+                <td id="shm-change" onclick="dropdown('shm')"></td>
+                <td id="shm-shares" onclick="dropdown('shm')">0</td>
+                <td id="shm-holdings" onclick="dropdown('shm')"></td>
+                <td><button class="stock-button" onclick="buyStock(3, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(3, 0)">Sell All</button></td>
             </tr>
-            <tr>
+            <tr class="stock-details" id="shm-stock-details">
+                <td colspan="9" id="shm-graf">
+                    <div class="chart" id="shm-chart" onclick="dropdown('shm')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(3)">-</span>
+                        <input class="input-number" id="shm-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(3)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(3, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(3, 1)">Sell</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="stock-row" id="aai-stock-row">
                 <td>Aethera</td>
                 <td>Airborne Adaptations Inc. (AAI)</td>
                 <td>◈ 20</td>
-                <td id="aai-price"></td>
-                <td id="aai-change"></td>
-                <td id="aai-shares">0</td>
-                <td id="aai-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(4, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(4, 1)">Sell</button></td>
+                <td id="aai-price" onclick="dropdown('aai')"></td>
+                <td id="aai-change" onclick="dropdown('aai')"></td>
+                <td id="aai-shares" onclick="dropdown('aai')">0</td>
+                <td id="aai-holdings" onclick="dropdown('aai')"></td>
+                <td><button class="stock-button" onclick="buyStock(4, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(4, 0)">Sell All</button></td>
             </tr>
-            <tr>
+            <tr class="stock-details" id="aai-stock-details">
+                <td colspan="9" id="aai-graf">
+                    <div class="chart" id="aai-chart" onclick="dropdown('aai')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(4)">-</span>
+                        <input class="input-number" id="aai-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(4)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(4, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(4, 1)">Sell</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="stock-row" id="cce-stock-row">
                 <td>Aethera</td>
                 <td>Cloud City Energy (CCE)</td>
                 <td>◈ 20</td>
-                <td id="cce-price"></td>
-                <td id="cce-change"></td>
-                <td id="cce-shares">0</td>
-                <td id="cce-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(5, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(5, 1)">Sell</button></td>
+                <td id="cce-price" onclick="dropdown('cce')"></td>
+                <td id="cce-change" onclick="dropdown('cce')"></td>
+                <td id="cce-shares" onclick="dropdown('cce')">0</td>
+                <td id="cce-holdings" onclick="dropdown('cce')"></td>
+                <td><button class="stock-button" onclick="buyStock(5, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(5, 0)">Sell All</button></td>
             </tr>
-            <tr>
+            <tr class="stock-details" id="cce-stock-details">
+                <td colspan="9" id="cce-graf">
+                    <div class="chart" id="cce-chart" onclick="dropdown('cce')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(5)">-</span>
+                        <input class="input-number" id="cce-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(5)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(5, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(5, 1)">Sell</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="stock-row" id="ddc-stock-row">
                 <td>Helion</td>
                 <td>Desert Diggers Corp. (DDC)</td>
                 <td>◈ 30</td>
-                <td id="ddc-price"></td>
-                <td id="ddc-change"></td>
-                <td id="ddc-shares">0</td>
-                <td id="ddc-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(6, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(6, 1)">Sell</button></td>
+                <td id="ddc-price" onclick="dropdown('ddc')"></td>
+                <td id="ddc-change" onclick="dropdown('ddc')"></td>
+                <td id="ddc-shares" onclick="dropdown('ddc')">0</td>
+                <td id="ddc-holdings" onclick="dropdown('ddc')"></td>
+                <td><button class="stock-button" onclick="buyStock(6, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(6, 0)">Sell All</button></td>
             </tr>
-            <tr>
+            <tr class="stock-details" id="ddc-stock-details">
+                <td colspan="9" id="ddc-graf">
+                    <div class="chart" id="ddc-chart" onclick="dropdown('ddc')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(6)">-</span>
+                        <input class="input-number" id="ddc-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(6)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(6, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(6, 1)">Sell</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="stock-row" id="sss-stock-row">
                 <td>Helion</td>
                 <td>SunStorm Solutions (SSS)</td>
                 <td>◈ 30</td>
-                <td id="sss-price"></td>
-                <td id="sss-change"></td>
-                <td id="sss-shares">0</td>
-                <td id="sss-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(7, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(7, 1)">Sell</button></td>
+                <td id="sss-price" onclick="dropdown('sss')"></td>
+                <td id="sss-change" onclick="dropdown('sss')"></td>
+                <td id="sss-shares" onclick="dropdown('sss')">0</td>
+                <td id="sss-holdings" onclick="dropdown('sss')"></td>
+                <td><button class="stock-button" onclick="buyStock(7, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(7, 0)">Sell All</button></td>
             </tr>
-            <tr>
+            <tr class="stock-details" id="sss-stock-details">
+                <td colspan="9" id="sss-graf">
+                    <div class="chart" id="sss-chart" onclick="dropdown('sss')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(7)">-</span>
+                        <input class="input-number" id="sss-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(7)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(7, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(7, 1)">Sell</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="stock-row" id="ooi-stock-row">
                 <td>Helion</td>
                 <td>Oasis Outfitters Inc. (OOI)</td>
                 <td>◈ 30</td>
-                <td id="ooi-price"></td>
-                <td id="ooi-change"></td>
-                <td id="ooi-shares">0</td>
-                <td id="ooi-holdings"></td>
-                <td><button class="stock-button" onclick="buyStock(8, 1)">Buy</button></td>
-                <td><button class="stock-button" onclick="sellStock(8, 1)">Sell</button></td>
+                <td id="ooi-price" onclick="dropdown('ooi')"></td>
+                <td id="ooi-change" onclick="dropdown('ooi')"></td>
+                <td id="ooi-shares" onclick="dropdown('ooi')">0</td>
+                <td id="ooi-holdings" onclick="dropdown('ooi')"></td>
+                <td><button class="stock-button" onclick="buyStock(8, 0)">Buy All</button></td>
                 <td><button class="stock-button" onclick="sellStock(8, 0)">Sell All</button></td>
+            </tr>
+            <tr class="stock-details" id="ooi-stock-details">
+                <td colspan="9" id="ooi-graf">
+                    <div class="chart" id="ooi-chart" onclick="dropdown('ooi')"></div>
+                    <div class="buysell">
+                        <span class="input-number-decrement" id="input-number-decrement-id" onclick="decreaseValue(8)">-</span>
+                        <input class="input-number" id="ooi-input-number-id" type="text" value="1" min="0" max="10">
+                        <span class="input-number-increment" id="input-number-increment-id" onclick="increaseValue(8)">+</span>
+                        <button class="stock-button-drop" onclick="buyStock(8, 1)">Buy</button>
+                        <button class="stock-button-drop" onclick="sellStock(8, 1)">Sell</button>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
     <script src="../js/stockmarket.js"></script>
+    <script src="../js/stockmarketlistdropdown.js"></script>
   </body>
 </html>

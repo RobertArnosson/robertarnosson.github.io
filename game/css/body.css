@@ -6,5 +6,5 @@ body {
     min-height: 100vh;
     margin: 0;
     user-select: none;
-    overflow: hidden;
+    overflow: auto;
 }
