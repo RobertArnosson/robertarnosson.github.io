@@ -42,9 +42,6 @@ html, body {
 }
 
 @media (max-width: 500px) {
-    table {
-        font-size: 0.8em;
-    }
     table td, table th {
         padding: 0.5em;
     }
