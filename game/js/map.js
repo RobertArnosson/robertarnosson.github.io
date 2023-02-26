@@ -10,16 +10,11 @@ let marker2_pos = marker2.getBoundingClientRect();
 let marker3 = document.getElementById("marker-3");
 let marker3_pos = marker3.getBoundingClientRect();
 
-let marker4 = document.getElementById("marker-4");
-let marker4_pos = marker4.getBoundingClientRect();
-
 let dragging = false;
 let lastX;
 let lastY;
 let mapX = 0;
 let mapY = 0;
-
-
 
 container.addEventListener("mousedown", function(e) {
   if (e.target === container || container.contains(e.target)) {
@@ -68,9 +63,6 @@ container.addEventListener("mousemove", function(e) {
 
     marker3.style.top = marker3_pos.top + (mapY + deltaY) + "px";
     marker3.style.left = marker3_pos.left + (mapX + deltaX) + "px";
-    
-    marker4.style.top = marker4_pos.top + (mapY + deltaY) + "px";
-    marker4.style.left = marker4_pos.left + (mapX + deltaX) + "px";
 
     lastX = e.clientX;
     lastY = e.clientY;

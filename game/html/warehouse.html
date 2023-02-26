@@ -5,8 +5,235 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" type="text/css" href="../css/body.css">
 	<link rel="stylesheet" type="text/css" href="../css/infobar.css">
+	<link rel="stylesheet" type="text/css" href="../css/warehouse.css">
 </head>
 <body>
+	<div class="info">
+        <div id="info-div">
+            <div id="map-select">
+                <div id="map-button">
+                    <a href="map_mine.html" draggable="false"><span>&lt;</span></a>
+                </div>
+            </div>
+            
+            <h1 id="money">◈ 0</h1>
 
+        </div>
+    </div>
+	<div class="grid-container">
+		<div class="grid-item">
+			<div class="grid-title">
+				<span class="grid-title-text">Novaria</span>
+			</div>
+			<div class="grid-table-div">
+				<table class="ore-table">
+					<thead>
+						<tr>
+							<th>Ore Icon</th>
+							<th>Ore Type</th>
+							<th>Amount</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>
+								<img src="../img/novaria/ores/Cryonite.png" alt="Cryonite">
+							</td>
+							<td>
+								<span>Cryonite</span>
+							</td>
+							<td class="ore-amount" id="cryonite-ore-amount">0</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="../img/novaria/ores/Glacialite.png" alt="Glacialite">
+							</td>
+							<td>
+								<span>Glacialite</span>
+							</td>
+							<td class="ore-amount" id="glacialite-ore-amount">0</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="../img/novaria/ores/Crystaline Ice.png" alt="Crystaline Ice">
+							</td>
+							<td>
+								<span>Crystaline Ice</span>
+							</td>
+							<td class="ore-amount" id="crystaline-ice-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/novaria/ores/Frost Iron.png" alt="Frost Iron">
+							</td>
+							<td>
+								<span>Frost Iron</span>
+							</td>
+							<td class="ore-amount" id="frost-iron-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/novaria/ores/Frostbite.png" alt="Frostbite">
+							</td>
+							<td>
+								<span>Frostbite</span>
+							</td>
+							<td class="ore-amount" id="frostbite-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/novaria/ores/Blizzardstone.png" alt="Blizzardstone">
+							</td>
+							<td>
+								<span>Blizzardstone</span>
+							</td>
+							<td class="ore-amount" id="blizzardstone-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/novaria/ores/Snow Quartz.png" alt="Snow Quartz">
+							</td>
+							<td>
+								<span>Snow Quartz</span>
+							</td>
+							<td class="ore-amount" id="snow-quartz-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Auroraite">
+							</td>
+							<td>
+								<span>Auroraite</span>
+							</td>
+							<td class="ore-amount" id="auroraite-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Ice Diamond">
+							</td>
+							<td>
+								<span>Ice Diamond</span>
+							</td>
+							<td class="ore-amount" id="ice-diamond-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Crystaline Ice">
+							</td>
+							<td>
+								<span>Crystaline Ice</span>
+							</td>
+							<td class="ore-amount" id="crystaline-ice-ore-amount">0</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="grid-item">
+			<div class="grid-title">
+				<span class="grid-title-text">Aethera</span>
+			</div>
+			<div class="grid-table-div">
+				<table class="ore-table">
+					<thead>
+						<tr>
+							<th>Ore Icon</th>
+							<th>Ore Type</th>
+							<th>Amount</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>
+								<img src="../img/template.png" alt="Voidstone">
+							</td>
+							<td>
+								<span>Voidstone</span>
+							</td>
+							<td class="ore-amount" id="voidstone-ore-amount">0</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="../img/template.png" alt="Solarium">
+							</td>
+							<td>
+								<span>Solarium</span>
+							</td>
+							<td class="ore-amount" id="solarium-ore-amount">0</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="../img/template.png" alt="Nebulite">
+							</td>
+							<td>
+								<span>Nebulite</span>
+							</td>
+							<td class="ore-amount" id="nebulite-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Lunarite">
+							</td>
+							<td>
+								<span>Lunarite</span>
+							</td>
+							<td class="ore-amount" id="lunarite-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Celestium">
+							</td>
+							<td>
+								<span>Celestium</span>
+							</td>
+							<td class="ore-amount" id="celestium-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Star Metal">
+							</td>
+							<td>
+								<span>Star Metal</span>
+							</td>
+							<td class="ore-amount" id="star-metal-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Cometstone">
+							</td>
+							<td>
+								<span>Cometstone</span>
+							</td>
+							<td class="ore-amount" id="cometstone-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Astralite">
+							</td>
+							<td>
+								<span>Astralite</span>
+							</td>
+							<td class="ore-amount" id="astralite-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Aeromite">
+							</td>
+							<td>
+								<span>Aeromite</span>
+							</td>
+							<td class="ore-amount" id="aeromite-ore-amount">0</td>
+						</tr>
+							<td>
+								<img src="../img/template.png" alt="Aetherium">
+							</td>
+							<td>
+								<span>Aetherium</span>
+							</td>
+							<td class="ore-amount" id="aetherium-ore-amount">0</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="grid-item"></div>
+		<div class="grid-item"></div>
+		<div class="grid-item"></div>
+		<div class="grid-item"></div>
+		<div class="grid-item"></div>
+		<div class="grid-item"></div>
+		<div class="grid-item"></div>
+		<div class="grid-item"></div>
+	</div>
 </body>
+<script type="module" src="../js/warehouse.js"></script>
+<script type="module" src="../js/storage.js"></script>
+<script type="module" src="../data/oredata.js"></script>
 </html>

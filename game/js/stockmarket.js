@@ -1,3 +1,21 @@
+import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } from '../js/storage.js';
+import { playerDict } from '../data/playerdata.js';
+
+//removeStorageItem("player_data")
+
+console.log(playerDict)
+
+const playerDictCheck = checkStorageItem("player_data", playerDict)
+console.log(playerDictCheck)
+
+let localPlayerDict;
+if (playerDictCheck) {
+    localPlayerDict = getStorageItem("player_data");
+    console.log(localPlayerDict);
+} else {
+    setStorageItem("player_data", playerDict);
+}
+
 
 
 // Stock data
@@ -10,7 +28,7 @@ const stocks = [
     basePrice: 10,
     price: 10,
     changeList: [],
-    volatility: 1,
+    volatility: 1.5,
     change: 0,
     shares: 0 
     },
@@ -46,7 +64,7 @@ const stocks = [
     basePrice: 20,
     price: 20,
     changeList: [],
-    volatility: 1,
+    volatility: 0.8,
     change: 0,
     shares: 0
     },
@@ -82,7 +100,7 @@ const stocks = [
     basePrice: 30,
     price: 30,
     changeList: [],
-    volatility: 1,
+    volatility: 2,
     change: 0,
     shares: 0
     },
@@ -106,30 +124,81 @@ const stocks = [
     basePrice: 30,
     price: 30,
     changeList: [],
-    volatility: 1,
+    volatility: 2,
     change: 0,
     shares: 0
     }
 ];
 
+let perlin = {
+    rand_vect: function(){
+        let theta = Math.random() * 2 * Math.PI;
+        return {x: Math.cos(theta), y: Math.sin(theta)};
+    },
+    dot_prod_grid: function(x, y, vx, vy){
+        let g_vect;
+        let d_vect = {x: x - vx, y: y - vy};
+        if (this.gradients[[vx,vy]]){
+            g_vect = this.gradients[[vx,vy]];
+        } else {
+            g_vect = this.rand_vect();
+            this.gradients[[vx, vy]] = g_vect;
+        }
+        return d_vect.x * g_vect.x + d_vect.y * g_vect.y;
+    },
+    smootherstep: function(x){
+        return 6*x**5 - 15*x**4 + 10*x**3;
+    },
+    interp: function(x, a, b){
+        return a + this.smootherstep(x) * (b-a);
+    },
+    seed: function(){
+        this.gradients = {};
+        this.memory = {};
+    },
+    get: function(x, y) {
+        if (this.memory.hasOwnProperty([x,y]))
+            return this.memory[[x,y]];
+        let xf = Math.floor(x);
+        let yf = Math.floor(y);
+        //interpolate
+        let tl = this.dot_prod_grid(x, y, xf,   yf);
+        let tr = this.dot_prod_grid(x, y, xf+1, yf);
+        let bl = this.dot_prod_grid(x, y, xf,   yf+1);
+        let br = this.dot_prod_grid(x, y, xf+1, yf+1);
+        let xt = this.interp(x-xf, tl, tr);
+        let xb = this.interp(x-xf, bl, br);
+        let v = this.interp(y-yf, xt, xb);
+        this.memory[[x,y]] = v;
+        return v;
+    }
+}
+perlin.seed();
+
+let crashChance = 0.01; // set the probability of a crash to 1%
+let crashSeverity = 0.5; // set the severity of the crash to 50% of the base price
+
 function updatePrices() {
+    let crashRiskStocks = ["DDC"]
     for (let i = 0; i < stocks.length; i++) {
         let stock = stocks[i];
         let basePrice = stock.basePrice;
-        let volatility;
-        if (Math.floor(Math.random() * 100) + 1 == 100) {
-            volatility = Math.floor(Math.random() * 10) + 1
-        } else {
-            volatility = stock.volatility + Math.random() - 0.5;
+        let volatility = perlin.get(i, Date.now() / 100000) * stock.volatility*10 * (Math.random() + 0.5); // Add randomness to volatility
+        let movement = perlin.get(i, Date.now() / 50000) * volatility * (Math.random() + 0.5); // Add randomness to movement
+
+        // Introduce crashChance variable
+        let crashChance = crashRiskStocks.includes(stock.name) ? 0.1 : 0.01;
+        if (Math.random() < crashChance) {
+            movement *= 3; // If stock crashes, triple the movement
+            console.log(`${stock.company} Crashed! Base price: ${stock.basePrice} | Price now: ${stock.price}`)
         }
-        let movement = Math.random() * volatility * 2 - volatility;
+
         let newPrice = Math.max(basePrice + movement, 1);
         stock.price = newPrice.toFixed(2);
-    
-    
+
         let priceElement = document.getElementById(stock.name.toLowerCase() + "-price");
         priceElement.innerHTML = stock.symbol + " " + stock.price;
-    
+
         let changeElement = document.getElementById(stock.name.toLowerCase() + "-change");
         let change = ((stock.price - basePrice) / basePrice) * 100;
         let changeFormatted = change.toFixed(2) + "%";
@@ -138,10 +207,10 @@ function updatePrices() {
             changeElement.classList.remove("negative");
             changeElement.classList.add("positive");
         } else {
-            changeElement.classList.remove("positive");
+            changeElement.classList.remove("positive"); 
             changeElement.classList.add("negative");
         }
-        
+
         addTostockList(stock.changeList, stock.price);
         updateGraf(stock.name.toLowerCase(), stock.changeList, stock.basePrice);
         updateHoldings(i);
@@ -205,22 +274,26 @@ function addTostockList(stockList, newValue) {
 }
   
 
-function updateGraf(stockname, list, baseprice) {
-    const data = list; // Your list of stock prices
+function updateGraf(stockname, list, basePrice) {
+    const data = list;
+
+    const WIDTH = 750
+    const HEIGHT = 450
 
     const chartContainer = document.getElementById(stockname+"-chart");
     let chartCanvas = document.getElementById(stockname+"-canvas");
     if (chartCanvas == null) {
-    chartCanvas = document.createElement("canvas");
-    chartCanvas.className = "canvas";
-    chartCanvas.id = stockname+"-canvas";
+        chartCanvas = document.createElement("canvas");
+        chartCanvas.className = "canvas";
+        chartCanvas.id = stockname+"-canvas";
     }
-    chartCanvas.width = 750;
-    chartCanvas.height = 450;
+
+    chartCanvas.width = WIDTH;
+    chartCanvas.height = HEIGHT;
     chartContainer.appendChild(chartCanvas);
-    
+
     const ctx = chartCanvas.getContext("2d");
-    
+
     const xPadding = 50;
     const yPadding = 50;
     const xStep = (chartCanvas.width - xPadding) / (data.length - 1);
@@ -228,17 +301,52 @@ function updateGraf(stockname, list, baseprice) {
     const xOffset = xPadding / 2;
     const yOffset = yPadding / 2;
     const basePriceIndex = Math.floor(data.length / 2); // Index of base price value
-    
+
     // Draw line chart
     ctx.beginPath();
-    ctx.moveTo(chartCanvas.width - xOffset, chartCanvas.height - (data[data.length - 1] - Math.min(...data)) * yStep - yOffset);
-    for (let i = data.length - 2; i >= 0; i--) {
-        const x = i * xStep + xOffset;
+    ctx.moveTo(chartCanvas.width - xOffset, chartCanvas.height - (data[0] - Math.min(...data)) * yStep - yOffset);
+    for (let i = 1; i < data.length; i++) {
+        const x = chartCanvas.width - (i * xStep + xOffset);
         const y = chartCanvas.height - (data[i] - Math.min(...data)) * yStep - yOffset;
         ctx.lineTo(x, y);
     }
     ctx.strokeStyle = "#FFA12D";
     ctx.stroke();
+    // Draw vertical lines
+    ctx.beginPath();
+    ctx.moveTo(chartCanvas.width - xOffset - xStep * basePriceIndex, chartCanvas.height - yOffset);
+    ctx.lineTo(chartCanvas.width - xOffset - xStep * basePriceIndex, yOffset);
+    ctx.strokeStyle = "#777";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(xOffset + xStep * (data.length - basePriceIndex - 1), chartCanvas.height - yOffset);
+    ctx.lineTo(xOffset + xStep * (data.length - basePriceIndex - 1), yOffset);
+    ctx.strokeStyle = "#777";
+    ctx.stroke();
+
+    // Display current price
+    const currentPrice = data[0];
+    const currentPriceY = chartCanvas.height - (currentPrice - Math.min(...data)) * yStep - yOffset;
+    ctx.font = "bold 20px Arial";
+    ctx.fillText("◈ " + currentPrice.toFixed(2), WIDTH - 80, currentPriceY - 10);
+    ctx.beginPath();
+    ctx.moveTo(WIDTH - 25, currentPriceY);
+    ctx.lineTo(WIDTH - 25, chartCanvas.height - yOffset);
+    ctx.strokeStyle = "#777";
+    ctx.stroke();
+}
+
+function increaseValue(stockIndex) {
+    const inputValueElement = document.getElementById(stocks[stockIndex].name.toLowerCase()+"-input-number-id")
+    inputValueElement.value = parseInt(inputValueElement.value) + 1;
+}
+
+function decreaseValue(stockIndex) {
+    const inputValueElement = document.getElementById(stocks[stockIndex].name.toLowerCase()+"-input-number-id")
+    if (parseInt(inputValueElement.value) > 1) {
+        inputValueElement.value = parseInt(inputValueElement.value) - 1;
+    }
 }
 
 function updateStockShares(stockIndex) {
@@ -256,23 +364,58 @@ function updateHoldings(stockIndex) {
 
 function updateBalance() {
     let money = document.getElementById('money');
-    money.textContent = "◈ "+balance.toFixed(0)
+    money.textContent = "◈ "+balance.toFixed(2)
+    localPlayerDict.money = parseFloat(balance.toFixed(2));
+    setStorageItem("player_data", localPlayerDict);
 }
 
-function increaseValue(stockIndex) {
-    const inputValueElement = document.getElementById(stocks[stockIndex].name.toLowerCase()+"-input-number-id")
-    inputValueElement.value = parseInt(inputValueElement.value) + 1;
-}
-
-function decreaseValue(stockIndex) {
-    const inputValueElement = document.getElementById(stocks[stockIndex].name.toLowerCase()+"-input-number-id")
-    if (parseInt(inputValueElement.value) > 1) {
-        inputValueElement.value = parseInt(inputValueElement.value) - 1;
-    }
-}
-
-let balance = 1000;
+let balance = parseFloat(localPlayerDict.money);
 updateBalance();
 
 updatePrices();
-setInterval(updatePrices, 2500);
+setInterval(updatePrices, 2000);
+
+function addNewEventListener(stockIndex) {
+    let stock = stocks[stockIndex];
+    const inputValueElement = document.getElementById(stock.name.toLowerCase()+"-input-number-id")
+    const buyall = document.getElementById(stock.name.toLowerCase() + "-stock-button-all-buy")
+    const sellall = document.getElementById(stock.name.toLowerCase() + "-stock-button-all-sell")
+    const buy = document.getElementById(stock.name.toLowerCase() + "-stock-button-buy")
+    const sell = document.getElementById(stock.name.toLowerCase() + "-stock-button-sell")
+    const increase = document.getElementById(stock.name.toLowerCase() + "-input-number-increment-id")
+    const decrease = document.getElementById(stock.name.toLowerCase() + "-input-number-decrement-id")
+
+    buyall.addEventListener("click", () => {
+        buyStock(stockIndex, 0);
+    })
+
+    sellall.addEventListener("click", () => {
+        sellStock(stockIndex, 0);
+    })
+
+    buy.addEventListener("click", () => {
+        buyStock(stockIndex, parseInt(inputValueElement.textContent));
+    })
+
+    sell.addEventListener("click", () => {
+        sellStock(stockIndex, parseInt(inputValueElement.textContent));
+    })
+
+    increase.addEventListener("click", () => {
+        increaseValue(stockIndex);
+    })
+
+    decrease.addEventListener("click", () => {
+        decreaseValue(stockIndex);
+    })
+}
+
+addNewEventListener(0);
+addNewEventListener(1);
+addNewEventListener(2);
+addNewEventListener(3);
+addNewEventListener(4);
+addNewEventListener(5);
+addNewEventListener(6);
+addNewEventListener(7);
+addNewEventListener(8);

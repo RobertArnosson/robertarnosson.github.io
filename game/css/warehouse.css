@@ -1,0 +1,111 @@
+html, body {
+    height: 100%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 100%;
+    grid-gap: 10px;
+    margin: 15px;
+}
+
+@media (max-width: 1300px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 5fr);
+        grid-template-rows: repeat(2, 1fr);
+        margin: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(10, 1fr);
+        margin: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    table {
+        font-size: 0.8em;
+    }
+    table td, table th {
+        padding: 0.5em;
+    }
+}
+
+.grid-item {
+    background-color: transparent;
+    border: 2px solid #FFA12D;
+    min-height: 400px;
+    height: 640px;
+    max-height: 640px;
+    overflow: auto;
+    text-align: center;
+    position: relative;
+}
+
+.grid-title {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+}
+
+.grid-title-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.grid-table-div {
+    margin-top: 65px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.ore-table {
+    border-collapse: collapse;
+    margin: 20px;
+    flex: 1;
+}
+  
+.ore-table th,
+.ore-table td {
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #d3821f;
+}
+  
+.ore-table th {
+    background-color: #FFA12D;
+    font-weight: bold;
+    padding: 6px;
+}
+  
+.ore-table td {
+    color: #eee;
+}
+  
+.ore-table td:first-child {
+    width: 50px;
+}
+  
+.ore-table td:first-child img {
+    width: 32px;
+    height: 32px;
+    image-rendering: crisp-edges;
+}
+  
+.ore-table td:nth-child(2) {
+    text-align: left;
+}
+  
+.ore-table td.ore-amount {
+    font-weight: bold;
+}
