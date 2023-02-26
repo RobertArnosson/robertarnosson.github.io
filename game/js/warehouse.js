@@ -28,6 +28,10 @@ if (playerDictCheck) {
     setStorageItem("player_data", playerDict);
 }
 
+function splitString(str) {
+    return str.split(',');
+}
+
 function updateBalance() {
     const moneyElement = document.getElementById("money");
     moneyElement.textContent = "◈ "+parseFloat(localPlayerDict.money).toFixed(2)
@@ -36,11 +40,42 @@ function updateBalance() {
 updateBalance()
 
 // Update ore amounts and display them on the page
-function updateOreAmount(oreType, planet, amount) {
-    localOreDict[planet][oreType][amount] = amount
+function updateOreAmount(planet, oreType, totalamount) {
+    localOreDict[planet][oreType].amount = parseInt(totalamount);
     setStorageItem("ore_data", localOreDict);
-    document.getElementById(`${oreType}-ore-amount`).innerHTML = amount;
+    document.getElementById(`${oreType}-ore-amount`).innerHTML = totalamount;
 }
 
-updateOreAmount("cryonite", "novaria", 100);
-updateOreAmount("glacialite", "novaria", 100);
+updateOreAmount("novaria", "cryonite", 100);
+updateOreAmount("novaria", "glacialite", 100);
+
+document.addEventListener("mousemove", function(event) {
+    // Check if the element has the data-hover-text attribute
+    let hasTargetAttribute = false;
+    try {
+        hasTargetAttribute = event.target.hasAttribute("data-hover-text");
+    } catch(error) {
+        hasTargetAttribute = false;
+    }
+    if (hasTargetAttribute) {
+        let hoverBox = document.getElementById("hover-box");
+        const planetore = splitString(event.target.getAttribute("data-hover-text"))
+        // Set the text of the box to the value of the data-hover-text attribute
+        hoverBox.innerHTML = localOreDict[planetore[0]][planetore[1]].description;
+        // Add a small delay to the box movement
+        setTimeout(function() {
+            // Position the box near the mouse cursor
+            hoverBox.style.top = event.clientY + 20 + "px";
+            hoverBox.style.left = event.clientX + 20 + "px";
+            // Make the box visible
+            hoverBox.style.display = "block";
+        }, 10); // Delay time in milliseconds
+    }
+});
+  
+document.addEventListener("mouseout", function() {
+    var hoverBox = document.getElementById("hover-box");
+    // Hide the box when the mouse moves out of the window
+    hoverBox.style.display = "none";
+});
+  

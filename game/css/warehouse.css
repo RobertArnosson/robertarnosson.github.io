@@ -2,6 +2,20 @@ html, body {
     height: 100%;
 }
 
+[data-hover-text] {
+    cursor: help;
+}
+
+#hover-box {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    z-index: 999;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
