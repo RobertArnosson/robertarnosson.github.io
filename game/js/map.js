@@ -25,15 +25,6 @@ container.addEventListener("mousedown", function(e) {
     }
 });
 
-container.addEventListener("touchstart", function(e) {
-    if (e.target === container || container.contains(e.target)) {
-        dragging = true;
-        lastX = e.touches[0].clientX;
-        lastY = e.touches[0].clientY;
-        map.style.cursor = "grabbing";
-    }
-});
-
 container.addEventListener("mousemove", function(e) {
     if (dragging) {
       
@@ -78,9 +69,29 @@ container.addEventListener("mousemove", function(e) {
     }
 });
 
+container.addEventListener("mouseup", function(e) {
+    dragging = false;
+    map.style.cursor = "grab";
+});
+
+container.addEventListener("mouseleave", function(e) {
+    if (dragging) {
+        dragging = false;
+        map.style.cursor = "grab";
+    }
+});
+
+container.addEventListener("touchstart", function(e) {
+    if (e.target === container || container.contains(e.target)) {
+        dragging = true;
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY;
+        map.style.cursor = "grabbing";
+    }
+});
+
 container.addEventListener("touchmove", function(e) {
     if (dragging) {
-      
         let deltaX = e.touches[0].clientX - lastX;
         let deltaY = e.touches[0].clientY - lastY;
 
@@ -107,7 +118,6 @@ container.addEventListener("touchmove", function(e) {
         map.style.left = (mapX + deltaX) + "px";
         map.style.top = (mapY + deltaY) + "px";
 
-        
         marker1.style.top = marker1_pos.top + (mapY + deltaY) + "px";
         marker1.style.left = marker1_pos.left + (mapX + deltaX) + "px";
 
@@ -122,28 +132,14 @@ container.addEventListener("touchmove", function(e) {
     }
 });
 
-container.addEventListener("mouseup", function(e) {
-    dragging = false;
-    map.style.cursor = "grab";
-});
-
 container.addEventListener("touchend", function(e) {
     dragging = false;
     map.style.cursor = "grab";
 });
 
-container.addEventListener("mouseleave", function(e) {
-    if (dragging) {
-        dragging = false;
-        map.style.cursor = "grab";
-    }
-});
-
 container.addEventListener("touchcancel", function(e) {
-    if (dragging) {
-        dragging = false;
-        map.style.cursor = "grab";
-    }
+    dragging = false;
+    map.style.cursor = "grab";
 });
 
 /*
