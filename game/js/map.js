@@ -28,8 +28,8 @@ container.addEventListener("mousedown", function(e) {
 container.addEventListener("touchstart", function(e) {
     if (e.target === container || container.contains(e.target)) {
         dragging = true;
-        lastX = e.clientX;
-        lastY = e.clientY;
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY;
         map.style.cursor = "grabbing";
     }
 });
@@ -81,8 +81,8 @@ container.addEventListener("mousemove", function(e) {
 container.addEventListener("touchmove", function(e) {
     if (dragging) {
       
-        let deltaX = e.clientX - lastX;
-        let deltaY = e.clientY - lastY;
+        let deltaX = e.touches[0].clientX - lastX;
+        let deltaY = e.touches[0].clientY - lastY;
 
         mapX = parseInt(map.style.left) || 0;
         mapY = parseInt(map.style.top) || 0;
@@ -117,8 +117,8 @@ container.addEventListener("touchmove", function(e) {
         marker3.style.top = marker3_pos.top + (mapY + deltaY) + "px";
         marker3.style.left = marker3_pos.left + (mapX + deltaX) + "px";
 
-        lastX = e.clientX;
-        lastY = e.clientY;
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY;
     }
 });
 
