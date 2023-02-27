@@ -2,13 +2,12 @@
     display: flex;
     flex-direction: row;
     flex: 1;
+    overflow-x: hidden;
 }
 
 .left {
     flex: 1;
-    background: linear-gradient(90deg, rgba(255,161,45,1) 0%, rgba(42,42,42,1) 95%);
-    background-position: 0% 100%;
-    background-size: 0% 100%;
+    background-color: #303030;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,69 +17,54 @@
 
 .right {
     flex: 1;
-    background: linear-gradient(270deg, rgba(255,161,45,1) 0%, rgba(42,42,42,1) 95%);
-    background-position: 100% 100%;
-    background-size: 0% 100%;
+    background-color: #303030;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 36px;
     transition: all 0.3s ease-in-out;
 }
 
 .text {
-    font-size: 36px;
+    font-size: 48px;
+    color: #FFA12D;
     transition: all 0.3s ease-in-out;
 }
 
 .arrow {
     margin: 0 20px;
-    font-size: 42px;
+    font-size: 56px;
+    color: #FFA12D;
     transition: all 0.3s ease-in-out;
 }
 
 .left:hover {
-    animation: left-gradient 0.3s ease-in-out;
+    transform: translateX(-50px);
+    background-color: #FFA12D;
+    cursor: pointer;
 }
 
 .right:hover {
-    animation: right-gradient 0.3s ease-in-out;
+    transform: translateX(50px);
+    background-color: #FFA12D;
+    cursor: pointer;
 }
 
 .left:hover #left-arrow {
     transform: translateX(-50px);
+    color: #303030;
 }
 
 .left:hover #left-text {
     transform: translateX(-25px);
+    color: #303030;
 }
 
 .right:hover #right-arrow {
     transform: translateX(50px);
+    color: #303030;
 }
 
 .right:hover #right-text {
     transform: translateX(25px);
-}
-
-@keyframes left-gradient {
-    0% {
-        background-position: 0% 100%;
-        background-size: 100% 100%;
-    }
-    100% {
-        background-position: 100% 100%;
-        background-size: 0% 100%;
-    }
-}
-
-@keyframes right-gradient {
-    0% {
-        background-position: 100% 100%;
-        background-size: 0% 100%;
-    }
-    100% {
-        background-position: 0% 100%;
-        background-size: 1000% 100%;
-    }
+    color: #303030;
 }

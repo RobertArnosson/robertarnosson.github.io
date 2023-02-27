@@ -4,6 +4,7 @@
     overflow: hidden;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
 }
   
@@ -45,26 +46,36 @@
 }
 
 #marker-1 {
-    left: calc(100px + 500px);
+    left: calc(100px + 100px);
     top: calc(100px + 100px);
 }
 
 #marker-2 {
-    left: calc(100px + 200px);
-    top: calc(100px + 300px);
+    left: calc(100px + 300px);
+    top: calc(100px + 100px);
 }
 
 #marker-3 {
-    left: calc(100px + 200px);
+    left: calc(100px + 500px);
     top: calc(100px + 100px);
 }
 
 #marker-4 {
-    left: calc(100px + 500px);
-    top: calc(100px + 300px);
+    left: calc(100px + 100px);
+    top: calc(100px + 200px);
 }
 
 #marker-5 {
-    left: calc(100px + 1200px);
+    left: calc(100px + 300px);
+    top: calc(100px + 200px);
+}
+
+#marker-6 {
+    left: calc(100px + 500px);
+    top: calc(100px + 200px);
+}
+
+#marker-7 {
+    left: calc(100px + 300px);
     top: calc(100px + 300px);
 }

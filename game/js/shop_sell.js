@@ -2,47 +2,6 @@ import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } f
 import { oreDict } from '../data/oredata.js';
 import { playerDict } from '../data/playerdata.js';
 
-//removeStorageItem("ore_data")
-
-/*
-CODE TO SAVE AND USE
-
-Single coin hollow
-&#9920;
-
-Double coin hollow
-&#9921;
-
-Single coin full
-&#9922;
-
-Double coin full
-&#9923;
-
-Hammers in cross
-&#9874;
-
-Pickaxe
-&#9874;
-
-Cross sign
-&#9938;
-
-Truck
-&#9951;
-
-Danger sign
-&#9888;
-
-Thin arrow left
-&#10229;
-
-Thin arrow right
-&#10230;
-
-
-*/
-
 console.log(oreDict)
 
 const oreDictCheck = checkStorageItem("ore_data", oreDict)
@@ -73,22 +32,3 @@ function updateBalance() {
 }
 
 updateBalance()
-
-function redirect(side) {
-    if (side == "buy") {
-        window.location.href = "../html/shop_buy.html"
-    } else if (side == "sell") {
-        window.location.href = "../html/shop_sell.html"
-    }
-}
-
-const buybutton = document.getElementById("buy");
-const sellbutton = document.getElementById("sell");
-
-buybutton.addEventListener("click", () => {
-    redirect("buy");
-});
-
-sellbutton.addEventListener("click", () => {
-    redirect("sell");
-});

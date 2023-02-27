@@ -128,10 +128,11 @@ Jonas was a miner in 2701 who started a mining business with big ambitions to co
 | Crystaline Ice | $3000 | 18 | 24 | Novaria | 300 | A transparent ore that looks like pure ice, but is actually a highly pure form of crystalline water |
 | Frost Iron | $4000 | 18 | 24 | Novaria | 400 | A dark grey ore that is infused with tiny crystals of ice. It can be used to create exceptionally strong and durable alloys. |
 | Frostbite | $5000 | 18 | 24 | Novaria | 500 | A bright blue ore that is only found in the coldest parts of Novaria. It can cause severe frostbite on contact, but is also highly conductive. |
-| Blizzardstone | $6000 | 18 | 24 | Novaria | 600 | A deep blue ore that forms in Novaria's most severe blizzards. It has strong electrical properties and is used in the production of high*tech electronics. |
+| Blizzardstone | $6000 | 18 | 24 | Novaria | 600 | A deep blue ore that forms in Novaria's most severe blizzards. It has strong electrical properties and is used in the production of high-tech electronics. |
 | Snow Quartz | $7000 | 18 | 24 | Novaria | 700 | A shimmering white ore that is found in Novaria's snowdrifts. It is used in the creation of high*quality gemstones and jewelry. |
-| Auroraite | $8000 | 18 | 24 | Novaria | 800 | A greenish*blue ore that glows softly in the dark. It is prized for its luminescent properties and is often used in decorative applications. |
+| Auroraite | $8000 | 18 | 24 | Novaria | 800 | A greenish-blue ore that glows softly in the dark. It is prized for its luminescent properties and is often used in decorative applications. |
 | Ice Diamond | $9000 | 18 | 24 | Novaria | 900 | A rare and valuable ore that only forms in the heart of Novaria's ice sheets. It is highly sought after for its beauty and hardness. |
+| Cryosium | $10000 | 18 | 24 | Novaria | 1000 | A valuable but dangerous ore in Novaria, used for cryogenic equipment. Mining it is risky due to explosions, but corporations compete for it. |
 
 ## Aethera
 
@@ -139,14 +140,29 @@ Jonas was a miner in 2701 who started a mining business with big ambitions to co
 | -------- | ----- | ------------- | ------------- | ------ | ------ | ----------- |
 | Voidstone | $1000 | 70 | 120 | Aethera | 100 | A dark and mysterious ore that is said to contain the essence of the void. It is often used in the creation of powerful magical spells. |
 | Solarium | $2000 | 60 | 100 | Aethera | 200 | A golden ore that is infused with the power of the sun. It is often used in the creation of advanced energy weapons. |
-| Nebulite | $3000 | 50 | 90 | Aethera | 300 | A shimmering ore that changes color depending on the light. It is often used in the creation of high*tech optics and lenses. |
+| Nebulite | $3000 | 50 | 90 | Aethera | 300 | A shimmering ore that changes color depending on the light. It is often used in the creation of high-tech optics and lenses. |
 | Lunarite | $4000 | 40 | 80 | Aethera | 400 | A silver*colored ore that is infused with lunar energy. It is often used in the creation of magical weapons and armor. |
 | Celestium | $5000 | 30 | 70 | Aethera | 500 | A rare and valuable ore that is said to have fallen from the heavens. It is used in the creation of powerful magical artifacts. |
 | Star Metal | $6000 | 20 | 60 | Aethera | 600 | A metallic ore that is infused with the energy of the stars. It is highly conductive and is used in the creation of advanced electronics. |
 | Cometstone | $7000 | 15 | 50 | Aethera | 700 | A rare and beautiful ore that resembles a comet streaking through the sky. It is often used in jewelry and other decorative items. |
 | Astralite | $8000 | 10 | 40 | Aethera | 800 | A shimmering blue ore that is imbued with mystical energy. It is used to power magical devices and is a key component in spellcasting. |
-| Aeromite | $9000 | 5 | 30 | Aethera | 900 | A lightweight ore that is prized for its durability and resistance to heat. It is often used in the construction of spacecraft and other high*tech machinery. |
+| Aeromite | $9000 | 5 | 30 | Aethera | 900 | A lightweight ore that is prized for its durability and resistance to heat. It is often used in the construction of spacecraft and other high-tech machinery. |
 | Aetherium | $10000 | 0 | 20 | Aethera | 1000 | A rare and valuable ore that glows with an otherworldly aura. It is said to contain immense power and is often used in magical rituals. |
+
+## Helion
+
+| Ore Form | Price | Minimum Depth | Maximum Depth | Planet | Rarity | Description |
+| -------- | ----- | ------------- | ------------- | ------ | ------ | ----------- |
+| Sandstone | $1000 | 70 | 120 | Aethera | 100 |  A sedimentary rock formed by sand particles fused together over time, rich in minerals and trace elements. |
+| Dune Glass | $2000 | 60 | 100 | Aethera | 200 | A translucent mineral formed by the intense heat and pressure of sandstorms, used in high-tech optics. |
+| Iron Sand | $3000 | 50 | 90 | Aethera | 300 | A type of sand that contains high levels of iron and can be smelted into iron bars for construction. |
+| Scorchstone | $4000 | 40 | 80 | Aethera | 400 | Volcanic rock that is highly resistant to heat, often used in construction on Helion. |
+| Sandstorm Crystal | $5000 | 30 | 70 | Aethera | 500 | A rare mineral found only in the most intense sandstorms, valuable for high-tech manufacturing. |
+| Sunstone | $6000 | 20 | 60 | Aethera | 600 | A gemstone formed by the intense heat and pressure of the Helion sun, prized for its color and clarity. |
+| Sand Ruby | $7000 | 15 | 50 | Aethera | 700 | A rare type of ruby found only in sand dunes, prized for its deep red color and durability. |
+| Desert Emerald | $8000 | 10 | 40 | Aethera | 800 | A unique type of emerald found only in Helion's deserts, prized for its green color. |
+| Sandstone Marble | $9000 | 5 | 30 | Aethera | 900 | A type of marble formed by compressed sand particles, valued for its texture and durability. |
+| Dusty Quartz | $10000 | 0 | 20 | Aethera | 1000 | A quartz with a unique dusty appearance found in remote regions, used in high-tech manufacturing. |
 
 # Functions And How It Work Behind The Curtains
 ## The ore system

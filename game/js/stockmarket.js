@@ -1,7 +1,9 @@
 import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } from '../js/storage.js';
 import { playerDict } from '../data/playerdata.js';
+import { stockmarketDict } from '../data/stockmarketdata.js';
 
 //removeStorageItem("player_data")
+//removeStorageItem("stockmarket_data")
 
 console.log(playerDict)
 
@@ -14,9 +16,24 @@ if (playerDictCheck) {
     console.log(localPlayerDict);
 } else {
     setStorageItem("player_data", playerDict);
+    localPlayerDict = getStorageItem("player_data");
+    console.log(localPlayerDict);
 }
 
+console.log(playerDict)
 
+const stockmarketDictCheck = checkStorageItem("stockmarket_data", stockmarketDict)
+console.log(stockmarketDictCheck)
+
+let localstockmarketDict;
+if (stockmarketDictCheck) {
+    localstockmarketDict = getStorageItem("stockmarket_data");
+    console.log(localstockmarketDict);
+} else {
+    setStorageItem("stockmarket_data", stockmarketDict);
+    localstockmarketDict = getStorageItem("stockmarket_data");
+    console.log(localstockmarketDict);
+}
 
 // Stock data
 const stocks = [
@@ -175,11 +192,8 @@ let perlin = {
 }
 perlin.seed();
 
-let crashChance = 0.01; // set the probability of a crash to 1%
-let crashSeverity = 0.5; // set the severity of the crash to 50% of the base price
-
 function updatePrices() {
-    let crashRiskStocks = ["DDC"]
+    let crashRiskStocks = []
     for (let i = 0; i < stocks.length; i++) {
         let stock = stocks[i];
         let basePrice = stock.basePrice;
@@ -188,9 +202,12 @@ function updatePrices() {
 
         // Introduce crashChance variable
         let crashChance = crashRiskStocks.includes(stock.name) ? 0.1 : 0.01;
-        if (Math.random() < crashChance) {
-            movement *= 3; // If stock crashes, triple the movement
-            console.log(`${stock.company} Crashed! Base price: ${stock.basePrice} | Price now: ${stock.price}`)
+        if (crashRiskStocks) {
+            if (Math.random() < crashChance) {
+                movement *= 3;
+                volatility *= 3 // If stock crashes, triple the movement
+                console.log(`${stock.company} Crashed!`)
+            }
         }
 
         let newPrice = Math.max(basePrice + movement, 1);
@@ -212,7 +229,7 @@ function updatePrices() {
         }
 
         addTostockList(stock.changeList, stock.price);
-        updateGraf(stock.name.toLowerCase(), stock.changeList, stock.basePrice);
+        updateGraf(stock.name.toLowerCase(), i, stock.changeList, stock.planet);
         updateHoldings(i);
     }
 }
@@ -274,8 +291,16 @@ function addTostockList(stockList, newValue) {
 }
   
 
-function updateGraf(stockname, list, basePrice) {
-    const data = list;
+function updateGraf(stockname, stockIndex, list, planet) {
+    let stock = stocks[stockIndex];
+    const data = localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change;
+    
+    localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change.unshift(parseFloat(parseFloat(stock.price).toFixed(2)));
+    if (localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change.length > 20) {
+        localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change.pop(0);
+    }
+    console.log(localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change)
+    setStorageItem("stockmarket_data", localstockmarketDict)
 
     const WIDTH = 750
     const HEIGHT = 450
@@ -312,19 +337,7 @@ function updateGraf(stockname, list, basePrice) {
     }
     ctx.strokeStyle = "#FFA12D";
     ctx.stroke();
-    // Draw vertical lines
-    ctx.beginPath();
-    ctx.moveTo(chartCanvas.width - xOffset - xStep * basePriceIndex, chartCanvas.height - yOffset);
-    ctx.lineTo(chartCanvas.width - xOffset - xStep * basePriceIndex, yOffset);
-    ctx.strokeStyle = "#777";
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(xOffset + xStep * (data.length - basePriceIndex - 1), chartCanvas.height - yOffset);
-    ctx.lineTo(xOffset + xStep * (data.length - basePriceIndex - 1), yOffset);
-    ctx.strokeStyle = "#777";
-    ctx.stroke();
-
+    
     // Display current price
     const currentPrice = data[0];
     const currentPriceY = chartCanvas.height - (currentPrice - Math.min(...data)) * yStep - yOffset;

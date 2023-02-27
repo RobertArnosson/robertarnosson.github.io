@@ -15,6 +15,8 @@ if (oreDictCheck) {
     console.log(localOreDict);
 } else {
     setStorageItem("ore_data", oreDict);
+    localOreDict = getStorageItem("ore_data");
+    console.log(localOreDict);
 }
 
 const playerDictCheck = checkStorageItem("player_data", playerDict)
@@ -26,6 +28,8 @@ if (playerDictCheck) {
     console.log(localPlayerDict);
 } else {
     setStorageItem("player_data", playerDict);
+    localPlayerDict = getStorageItem("player_data");
+    console.log(localPlayerDict);
 }
 
 function splitString(str) {

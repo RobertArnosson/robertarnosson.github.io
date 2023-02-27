@@ -13,6 +13,27 @@ let marker3_pos = marker3.getBoundingClientRect();
 let marker4 = document.getElementById("marker-4");
 let marker4_pos = marker4.getBoundingClientRect();
 
+let marker5 = document.getElementById("marker-5");
+let marker5_pos = marker5.getBoundingClientRect();
+
+let marker6 = document.getElementById("marker-6");
+let marker6_pos = marker6.getBoundingClientRect();
+
+let marker7 = document.getElementById("marker-7");
+let marker7_pos = marker7.getBoundingClientRect();
+
+function findMarkerButtons() {
+    const container = document.getElementById("container");
+    const markerButtons = container.querySelectorAll(".marker-button");
+    for (let i = 0; i < markerButtons.length; i++) {
+        const markerButton = markerButtons[i];
+        // do something with the markerButton element, for example:
+        console.log(markerButton.id);
+    }
+}
+
+findMarkerButtons()
+
 let dragging = false;
 let lastX;
 let lastY;
@@ -69,6 +90,15 @@ container.addEventListener("mousemove", function(e) {
 
         marker4.style.top = marker4_pos.top + (mapY + deltaY) + "px";
         marker4.style.left = marker4_pos.left + (mapX + deltaX) + "px";
+
+        marker5.style.top = marker5_pos.top + (mapY + deltaY) + "px";
+        marker5.style.left = marker5_pos.left + (mapX + deltaX) + "px";
+
+        marker6.style.top = marker6_pos.top + (mapY + deltaY) + "px";
+        marker6.style.left = marker6_pos.left + (mapX + deltaX) + "px";
+
+        marker7.style.top = marker7_pos.top + (mapY + deltaY) + "px";
+        marker7.style.left = marker7_pos.left + (mapX + deltaX) + "px";
 
         lastX = e.clientX;
         lastY = e.clientY;
@@ -135,6 +165,15 @@ container.addEventListener("touchmove", function(e) {
 
         marker4.style.top = marker4_pos.top + (mapY + deltaY) + "px";
         marker4.style.left = marker4_pos.left + (mapX + deltaX) + "px";
+
+        marker5.style.top = marker5_pos.top + (mapY + deltaY) + "px";
+        marker5.style.left = marker5_pos.left + (mapX + deltaX) + "px";
+
+        marker6.style.top = marker6_pos.top + (mapY + deltaY) + "px";
+        marker6.style.left = marker6_pos.left + (mapX + deltaX) + "px";
+
+        marker7.style.top = marker7_pos.top + (mapY + deltaY) + "px";
+        marker7.style.left = marker7_pos.left + (mapX + deltaX) + "px";
 
         lastX = e.touches[0].clientX;
         lastY = e.touches[0].clientY;
