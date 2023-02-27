@@ -18,7 +18,7 @@
     height: 100vh;
     background-size: cover;
     background-position: center;
-    background-repeat:space;
+    background-repeat: repeat;
     user-select: none;
     -webkit-user-drag: none;
     user-select: none;
@@ -26,12 +26,6 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     overflow: hidden;
-}
-
-@media (max-width: 500px) {
-    #map {
-        transform: rotate(90deg);
-    }
 }
 
 .marker-button {
