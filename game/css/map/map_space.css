@@ -57,24 +57,51 @@
     color: aliceblue;
 }
 
+.marker-button-s {
+    border: 0;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 15%;
+    color: rgb(0, 0, 0);
+    background: none;
+    width: 192px;
+    height: 192px;
+    overflow: hidden;
+    transition: all 0.15s ease-in-out;
+}
+
+#marker-sun {
+    left: calc(50vw - 96px);
+    top: calc(50vh - 96px);
+    background-image: url("../../img/planets/sun.png");
+    background-repeat: no-repeat;
+    image-rendering: crisp-edges;
+    background-size: 192px;
+    transition: all 0.3s ease-in-out;
+}
+
+#marker-sun:hover {
+    filter: brightness(0.75);
+    filter: drop-shadow(0 0 220px #ff790c);
+    transform: scale(1.075);
+}
+
+
 #marker-1 {
-    left: calc(100px + 100px);
-    top: calc(100px + 100px);
     background-image: url("../../img/planets/novaria.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
-
+  
 #marker-1:hover {
     filter: brightness(0.75);
     filter: drop-shadow(0 0 20px #222222);
     transform: scale(1.1);
 }
+
 #marker-2 {
-    left: calc(100px + 100px);
-    top: calc(100px + 300px);
     background-image: url("../../img/planets/aethera.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -89,8 +116,6 @@
 }
 
 #marker-3 {
-    left: calc(100px + 100px);
-    top: calc(100px + 500px);
     background-image: url("../../img/planets/helion.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -105,8 +130,6 @@
 }
 
 #marker-4 {
-    left: calc(100px + 300px);
-    top: calc(100px + 100px);
     background-image: url("../../img/planets/terra_nova.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -121,8 +144,6 @@
 }
 
 #marker-5 {
-    left: calc(100px + 300px);
-    top: calc(100px + 300px);
     background-image: url("../../img/planets/arcadia.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -137,8 +158,6 @@
 }
 
 #marker-6 {
-    left: calc(100px + 300px);
-    top: calc(100px + 500px);
     background-image: url("../../img/planets/cerulea.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -153,8 +172,6 @@
 }
 
 #marker-7 {
-    left: calc(100px + 500px);
-    top: calc(100px + 100px);
     background-image: url("../../img/planets/xenos.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -169,8 +186,6 @@
 }
 
 #marker-8 {
-    left: calc(100px + 500px);
-    top: calc(100px + 300px);
     background-image: url("../../img/planets/titanus.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -185,8 +200,6 @@
 }
 
 #marker-9 {
-    left: calc(100px + 500px);
-    top: calc(100px + 500px);
     background-image: url("../../img/planets/eridanus.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
@@ -201,8 +214,6 @@
 }
 
 #marker-10 {
-    left: calc(100px + 700px);
-    top: calc(100px + 300px);
     background-image: url("../../img/planets/aurius.png");
     background-repeat: no-repeat;
     image-rendering: crisp-edges;
