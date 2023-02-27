@@ -31,18 +31,6 @@ let marker9_pos = marker9.getBoundingClientRect();
 let marker10 = document.getElementById("marker-10");
 let marker10_pos = marker10.getBoundingClientRect();
 
-function findMarkerButtons() {
-    const container = document.getElementById("container");
-    const markerButtons = container.querySelectorAll(".marker-button");
-    for (let i = 0; i < markerButtons.length; i++) {
-        const markerButton = markerButtons[i];
-        // do something with the markerButton element, for example:
-        console.log(markerButton.id);
-    }
-}
-
-findMarkerButtons()
-
 let dragging = false;
 let lastX;
 let lastY;

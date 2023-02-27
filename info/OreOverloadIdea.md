@@ -111,7 +111,7 @@ Jonas was a miner in 2701 who started a mining business with big ambitions to co
 | 4      | Terra Nova  | A planet with a lush, verdant surface teeming with life, but also home to dangerous predators and ancient ruins. |
 | 5      | Arcadia     | A world entirely covered by dense, impenetrable forests, where giant trees and exotic creatures dominate the landscape. |
 | 6      | Cerulea     | A planet with a vast, turbulent ocean and frequent, devastating storms, where underwater cities and creatures thrive. |
-| 7      | Xenos       | A rocky, barren world with a thin atmosphere, where strange, alien ruins and artifacts hint at a long*lost civilization. |
+| 7      | Xenos       | A rocky, barren world with a thin atmosphere, where strange, alien ruins and artifacts hint at a long-lost civilization. |
 | 8      | Titanus     | A moon of a gas giant, with a thick, smoggy atmosphere and towering, spiky rock formations reaching for the sky. |
 | 9      | Eridanus    | A planet with a complex, interconnected system of underground tunnels and caverns, home to strange, bioluminescent creatures. |
 | 10     | Aurius      | A planet with a vibrant, colorful landscape and crystal*clear rivers, where people have developed a deep connection to the natural world and live in harmony with it. |
