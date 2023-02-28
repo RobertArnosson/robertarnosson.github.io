@@ -82,7 +82,7 @@
 
 #marker-sun:hover {
     filter: brightness(0.75);
-    filter: drop-shadow(0 0 220px #ff790c);
+    filter: drop-shadow(0 0 200px #ff790c);
     transform: scale(1.075);
 }
 
@@ -225,4 +225,20 @@
     filter: brightness(0.75);
     filter: drop-shadow(0 0 20px #222222);
     transform: scale(1.1);
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+@media (max-width: 500px) {
+    
 }

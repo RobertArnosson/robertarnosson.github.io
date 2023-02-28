@@ -11,8 +11,9 @@ html, body {
     top: -9999px;
     left: -9999px;
     z-index: 999;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: #202020;
+    border: 1px solid #FFA12D;
+    color: #f5f5f5;
     padding: 10px;
 }
 
