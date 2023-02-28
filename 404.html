@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>404 Page Not Found</title>
-	<link rel="stylesheet" type="text/css" href="game/css/body.css">
     <style>
         * {
             font-family: Google sans, Arial;
@@ -88,8 +87,20 @@
                 <span class="fade-in" id="digit3">4</span>
             </h1>
             <h3 class="fadeIn">PAGE NOT FOUND</h3>
-            <button type="button" name="button" onclick="window.location.href='index.html'">Return To Home</button>
+            <button id="button" type="button" name="button">Return To Home</button>
         </div>
     </div>
 </body>
+<script>
+    const button = document.getElementById("button");
+
+    button.addEventListener("click", () => {
+        const mainpage = window.location.href;
+        let splitUrl = mainpage.split("/");
+        let newUrl = splitUrl.slice(0, 3).join("/")+"/";
+        console.log(mainpage);
+        console.log(newUrl);
+        window.location.href = newUrl+"index.html"
+    })
+</script>
 </html>
