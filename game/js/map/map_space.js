@@ -1,7 +1,7 @@
 import { setStorageItem, getStorageItem } from '../storage.js';
 
 /* Ring radius */
-var radius = 300;
+var radius = 330;
 
 /* Number of markers */
 var numMarkers = 10;
