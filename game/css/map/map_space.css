@@ -75,7 +75,11 @@
     top: calc(50vh - 96px);
     background-image: url("../../img/planets/sun.png");
     background-repeat: no-repeat;
-    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 192px;
     transition: all 0.3s ease-in-out;
 }
@@ -90,7 +94,11 @@
 #marker-1 {
     background-image: url("../../img/planets/novaria.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -104,7 +112,11 @@
 #marker-2 {
     background-image: url("../../img/planets/aethera.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -118,7 +130,11 @@
 #marker-3 {
     background-image: url("../../img/planets/helion.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -132,7 +148,11 @@
 #marker-4 {
     background-image: url("../../img/planets/terra_nova.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -146,7 +166,11 @@
 #marker-5 {
     background-image: url("../../img/planets/arcadia.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -160,7 +184,11 @@
 #marker-6 {
     background-image: url("../../img/planets/cerulea.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -174,7 +202,11 @@
 #marker-7 {
     background-image: url("../../img/planets/xenos.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -188,7 +220,11 @@
 #marker-8 {
     background-image: url("../../img/planets/titanus.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -202,7 +238,11 @@
 #marker-9 {
     background-image: url("../../img/planets/eridanus.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
@@ -216,7 +256,11 @@
 #marker-10 {
     background-image: url("../../img/planets/aurius.png");
     background-repeat: no-repeat;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     background-size: 128px;
     transition: all 0.15s ease-in-out;
 }
