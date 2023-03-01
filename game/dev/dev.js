@@ -2,6 +2,8 @@ import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } f
 import { oreDict } from '../data/oredata.js';
 import { playerDict } from '../data/playerdata.js';
 
+import { hashString } from './hash.js';
+
 let hasLoggedIn = false;
 
 const oreDictCheck = checkStorageItem("ore_data", oreDict)
@@ -37,9 +39,14 @@ loginButton.addEventListener('click', function(event) {
     // Get the input values
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
+    console.log(password)
+    let passwordHashed;
+
+    passwordHashed = hashString(password)
+    console.log(passwordHashed)
     
     // Check if the input values match the expected values
-    if (username === 'dev' && password === 'dev') {
+    if (username === 'dev' && passwordHashed === 'ef260e9aa3c673af240d17a2660480361a8e081d1ffeca2a5ed0e3219fc18567') {
         // Redirect to the dev tools page if the credentials are correct
         document.querySelector('.container').style.display = "none";
         hasLoggedIn = true;
