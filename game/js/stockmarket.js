@@ -296,7 +296,7 @@ function updateGraf(stockname, stockIndex, list, planet) {
     const data = localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change;
     
     localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change.unshift(parseFloat(parseFloat(stock.price).toFixed(2)));
-    if (localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change.length > 20) {
+    if (localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change.length > 50) {
         localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change.pop(0);
     }
     console.log(localstockmarketDict[planet.toLowerCase()][stockname.toLowerCase()].change)
@@ -387,6 +387,21 @@ updateBalance();
 
 updatePrices();
 setInterval(updatePrices, 2000);
+
+const backbutton = document.getElementById("back");
+
+backbutton.addEventListener("click", () => {
+    const mainpage = window.location.href;
+    let splitUrl = mainpage.split("/");
+    let newUrl = splitUrl.slice(0, 3).join("/")+"/";
+    console.log(mainpage);
+    console.log(newUrl);
+
+    const planetpage = `game/html/planets/map_${localPlayerDict.planet}.html`
+
+    window.location.href = newUrl+planetpage;
+
+});
 
 function addNewEventListener(stockIndex) {
     let stock = stocks[stockIndex];

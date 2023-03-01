@@ -31,11 +31,29 @@
 </head>
 <body>
     <h1>Rerouting...</h1>
-    <a href="./game/start.html">&#8674; Click here if you're not rerouted &#8672;</a>
+    <a id="notrerouted">&#8674; Click here if you're not rerouted &#8672;</a>
 </body>
 <script>
-    window.addEventListener("load", (event) => {
-        window.location.href = "./game/start.html"
+    const reroutelink = "game/start.html"
+
+    const notrerouted = document.getElementById("notrerouted");
+
+    window.addEventListener("load", () => {
+        const mainpage = window.location.href;
+        let splitUrl = mainpage.split("/");
+        let newUrl = splitUrl.slice(0, 3).join("/")+"/";
+        console.log(mainpage);
+        console.log(newUrl);
+        window.location.href = newUrl+reroutelink;
+    })
+
+    notrerouted.addEventListener("click", () => {
+        const mainpage = window.location.href;
+        let splitUrl = mainpage.split("/");
+        let newUrl = splitUrl.slice(0, 3).join("/")+"/";
+        console.log(mainpage);
+        console.log(newUrl);
+        window.location.href = newUrl+reroutelink;
     })
 </script>
 </html>

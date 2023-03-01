@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    overflow-x: hidden;
+}
+
+.left {
+    flex: 1;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    transition: all 0.3s ease-in-out;
+}
+
+.middle {
+    flex: 1;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    transition: all 0.3s ease-in-out;
+}
+
+.right {
+    flex: 1;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.text {
+    font-size: 48px;
+    color: #FFA12D;
+    transition: all 0.3s ease-in-out;
+}
+
+.image {
+    width: 64px;
+    height: 64px;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+    display: grid;
+}
+
+.left:hover {
+    flex-grow: 1.15;
+    background-color: #FFA12D;
+    cursor: pointer;
+}
+
+.middle:hover {
+    flex-grow: 1.15;
+    background-color: #FFA12D;
+    cursor: pointer;
+}
+
+.right:hover {
+    flex-grow: 1.15;
+    background-color: #FFA12D;
+    cursor: pointer;
+}
+
+.left:hover .text {
+    color: #303030;
+}
+
+.middle:hover .text {
+    color: #303030;
+}
+
+.right:hover .text {
+    color: #303030;
+}

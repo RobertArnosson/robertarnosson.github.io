@@ -53,6 +53,21 @@ function updateOreAmount(planet, oreType, totalamount) {
 updateOreAmount("novaria", "cryonite", 100);
 updateOreAmount("novaria", "glacialite", 100);
 
+const backbutton = document.getElementById("back");
+
+backbutton.addEventListener("click", () => {
+    const mainpage = window.location.href;
+    let splitUrl = mainpage.split("/");
+    let newUrl = splitUrl.slice(0, 3).join("/")+"/";
+    console.log(mainpage);
+    console.log(newUrl);
+
+    const planetpage = `game/html/planets/map_${localPlayerDict.planet}.html`
+
+    window.location.href = newUrl+planetpage;
+
+});
+
 document.addEventListener("mousemove", function(event) {
     // Check if the element has the data-hover-text attribute
     let hasTargetAttribute = false;

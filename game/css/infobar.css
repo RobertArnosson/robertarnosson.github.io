@@ -51,6 +51,7 @@
 }
 #map-button a:hover {
     color: #FFA12D;
+    cursor: pointer;
 }
   
   

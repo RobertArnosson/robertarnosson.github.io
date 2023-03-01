@@ -1,7 +1,18 @@
-import { setStorageItem, getStorageItem } from '../storage.js';
+import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } from '../../js/storage.js';
+import { playerDict } from '../../data/playerdata.js';
 
-// Get the URL of the last page visited, if it exists
-const planet = getStorageItem('currentPlanet');
+const playerDictCheck = checkStorageItem("player_data", playerDict)
+console.log(playerDictCheck)
+
+let localPlayerDict;
+if (playerDictCheck) {
+    localPlayerDict = getStorageItem("player_data");
+    console.log(localPlayerDict);
+} else {
+    setStorageItem("player_data", playerDict);
+}
+
+const planet = localPlayerDict.planet
 
 // If a last page URL was found, output it to the console
 if (planet) {
@@ -23,6 +34,5 @@ window.addEventListener('beforeunload', function(event) {
 	// Save the current page URL to local storage if not reloading
 	if (!isPageReloading) {
 		const currentUrl = window.location.href;
-		setStorageItem('lastPage', currentUrl);
 	}
 });

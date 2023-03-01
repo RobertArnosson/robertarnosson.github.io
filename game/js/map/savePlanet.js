@@ -1,9 +1,11 @@
-import { setStorageItem, getStorageItem } from '../storage.js';
+import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } from '../storage.js';
 
 function savePlanet(planet) {
-    setStorageItem("current_planet", planet);
+    const playerData = getStorageItem("player_data")
+    playerData.planet = planet
+    setStorageItem("player_data", playerData);
     window.location.href=`../html/planets/map_${planet}.html`
-    console.log(getStorageItem("current_planet"))
+    removeStorageItem("current_planet")
 }
 
 export { savePlanet }

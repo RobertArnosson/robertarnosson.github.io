@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ore Overload II</title>
+	<link rel="stylesheet" type="text/css" href="../css/body.css">
+	<link rel="stylesheet" type="text/css" href="../css/infobar.css">
+	<link rel="stylesheet" type="text/css" href="dev.css">
+</head>
+<body>
+	<div class="info">
+        <div id="info-div">
+            <div id="map-select">
+                <div id="map-button">
+                    <a id="info-back" draggable="false"><span>&larr; Back</span></a>
+                </div>
+            </div>
+            
+            <h1 id="money">◈ 0</h1>
+
+        </div>
+    </div>
+    <div class="tools-container">
+        <div class="add-money-tool">
+            <h2>Add or Remove Money</h2>
+            <input type="number" class="add-money" id="add-money-i" placeholder="Enter amount">
+            <button class="add-money" id="add-money-b">Add Money</button>
+            <button class="remove-money" id="remove-money-b">Remove Money</button>
+        </div>
+    </div>    
+    <div class="container">
+        <div class="login">
+            <div class="form">
+                <h2>Login</h2>
+                <p>This is the login for the dev tools so you should not have access to this.</p>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <label for="pwd">Password</label>
+                <input type="password" id="password" name="password">
+                <button id="login-b">Login</button>
+                <button id="back-b">Back</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module" src="../js/mine.js"></script>
+<script type="module" src="../js/back.js"></script>
+<script type="module" src="../js/storage.js"></script>
+<script type="module" src="../data/oredata.js"></script>
+<script type="module" src="../data/playerdata.js"></script>
+<script type="module" src="dev.js"></script>
+</html>

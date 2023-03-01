@@ -1,4 +1,4 @@
-import { setStorageItem, getStorageItem } from '../storage.js';
+import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } from '../storage.js';
 
 /* Ring radius */
 var radius = 330;
@@ -19,9 +19,11 @@ for (var i = 1; i <= numMarkers; i++) {
 }
 
 function savePlanet(planet) {
-    setStorageItem("current_planet", planet);
+    const playerData = getStorageItem("player_data")
+    playerData.planet = planet
+    setStorageItem("player_data", playerData);
     window.location.href=`../html/planets/map_${planet}.html`
-    console.log(getStorageItem("current_planet"))
+    console.log(getStorageItem("player_data"))
 }
 
 let markers = []
@@ -35,3 +37,15 @@ for (let i = 1; i <= numMarkers; i++) {
         console.log("Saved planet: "+planet)
     })
 }
+
+const devDiv = document.getElementById("dev");
+
+devDiv.addEventListener("click", () => {
+    const mainpage = window.location.href;
+    let splitUrl = mainpage.split("/");
+    let newUrl = splitUrl.slice(0, 3).join("/")+"/";
+    console.log(mainpage);
+    console.log(newUrl);
+
+    window.location.href = newUrl+"game/dev/dev.html"
+});

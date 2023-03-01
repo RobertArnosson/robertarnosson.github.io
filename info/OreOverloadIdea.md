@@ -42,6 +42,12 @@ Jonas was a miner in 2701 who started a mining business with big ambitions to co
 * This is where the player can buy and sell stock from other mining companies
 * The player also has the ability to buy a whole mining company and take ownership over that company and continue to earn what that company earned
 
+### Casino
+* This is where the player can bet on different games to ether loose or gain money.
+1. The color wheel - The player chooses an amount to bet and a color to bet on and if the wheel spinis on that color the money bet doubles
+2. The classic tripple spin - The player spins for an amount of money and can win small amounts or the jackpot
+3. The grid guesser - The player bets money on 1-3 tiles in a grid that is 5x5 and the money gets timed by 1.5 for each tile that is won
+
 ### Warehouse
 * This is where the player can see there storage of ores and materials
 

@@ -82,6 +82,21 @@ function redirect(side) {
     }
 }
 
+const backbutton = document.getElementById("back");
+
+backbutton.addEventListener("click", () => {
+    const mainpage = window.location.href;
+    let splitUrl = mainpage.split("/");
+    let newUrl = splitUrl.slice(0, 3).join("/")+"/";
+    console.log(mainpage);
+    console.log(newUrl);
+
+    const planetpage = `game/html/planets/map_${localPlayerDict.planet}.html`
+
+    window.location.href = newUrl+planetpage;
+
+});
+
 const buybutton = document.getElementById("buy");
 const sellbutton = document.getElementById("sell");
 

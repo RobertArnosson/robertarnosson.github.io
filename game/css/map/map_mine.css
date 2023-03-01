@@ -76,6 +76,11 @@
 }
 
 #marker-7 {
-    left: calc(100px + 300px);
+    left: calc(100px + 100px);
     top: calc(100px + 300px);
+}
+
+#marker-8 {
+    left: calc(100px + 300px);
+    top: calc(100px + 500px);
 }

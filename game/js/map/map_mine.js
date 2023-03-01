@@ -58,10 +58,10 @@ container.addEventListener("mousemove", function(e) {
         mapX = parseInt(map.style.left) || 0;
         mapY = parseInt(map.style.top) || 0;
 
-        maxX = 100; // maximum x scroll value (you can change this to your desired value)
-        maxY = 100; // maximum y scroll value (you can change this to your desired value)
-        minX = -(map.offsetWidth - container.offsetWidth + 100); // minimum x scroll value (you can change this to your desired value)
-        minY = -(map.offsetHeight - container.offsetHeight + 100); // minimum y scroll value (you can change this to your desired value)
+        let maxX = 100; // maximum x scroll value (you can change this to your desired value)
+        let maxY = 100; // maximum y scroll value (you can change this to your desired value)
+        let minX = -(map.offsetWidth - container.offsetWidth + 100); // minimum x scroll value (you can change this to your desired value)
+        let minY = -(map.offsetHeight - container.offsetHeight + 100); // minimum y scroll value (you can change this to your desired value)
 
         // Adjust the deltaX and/or deltaY if it would move the map outside of the allowed scroll range
         if (mapX + deltaX > maxX) {

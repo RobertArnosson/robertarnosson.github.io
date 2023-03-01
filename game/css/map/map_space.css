@@ -271,6 +271,14 @@
     transform: scale(1.1);
 }
 
+.dev-div {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 3px;
+    height: 3px;
+    background-color: #ff790c;
+}
 
 @keyframes spin {
     from {
