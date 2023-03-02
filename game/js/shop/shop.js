@@ -1,6 +1,6 @@
-import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } from '../js/storage.js';
-import { oreDict } from '../data/oredata.js';
-import { playerDict } from '../data/playerdata.js';
+import { setStorageItem, getStorageItem, removeStorageItem, checkStorageItem } from '../../js/storage.js';
+import { oreDict } from '../../data/oredata.js';
+import { playerDict } from '../../data/playerdata.js';
 
 //removeStorageItem("ore_data")
 
@@ -81,21 +81,6 @@ function redirect(side) {
         window.location.href = "../html/shop_sell.html"
     }
 }
-
-const backbutton = document.getElementById("back");
-
-backbutton.addEventListener("click", () => {
-    const mainpage = window.location.href;
-    let splitUrl = mainpage.split("/");
-    let newUrl = splitUrl.slice(0, 3).join("/")+"/";
-    console.log(mainpage);
-    console.log(newUrl);
-
-    const planetpage = `game/html/planets/map_${localPlayerDict.planet}.html`
-
-    window.location.href = newUrl+planetpage;
-
-});
 
 const buybutton = document.getElementById("buy");
 const sellbutton = document.getElementById("sell");

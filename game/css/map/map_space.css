@@ -275,8 +275,8 @@
     position: absolute;
     top: 10px;
     left: 5px;
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
 }
 
 @keyframes spin {

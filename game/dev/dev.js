@@ -39,14 +39,11 @@ loginButton.addEventListener('click', function(event) {
     // Get the input values
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
-    console.log(password)
-    let passwordHashed;
 
-    passwordHashed = hashString(password)
-    console.log(passwordHashed)
+    let passwordHashed = hashString(password);
     
     // Check if the input values match the expected values
-    if (username === 'dev' && passwordHashed === 'ef260e9aa3c673af240d17a2660480361a8e081d1ffeca2a5ed0e3219fc18567') {
+    if (username === 'dev' && passwordHashed === '7930bc55') {
         // Redirect to the dev tools page if the credentials are correct
         document.querySelector('.container').style.display = "none";
         hasLoggedIn = true;

@@ -1,12 +1,13 @@
 function hashString(str) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(str);
-    const hash = crypto.subtle.digest('SHA-256', data);
-    console.log(data)
-    const hexString = Array.from(new Uint8Array(hash))
-        .map(b => b.toString(16).padStart(2, '0'))
-        .join('');
-    return hexString;
+    let hash = 0;
+    for (let n = 0; n < 5; n++) {
+        for (let i = 0; i < str.length; i++) {
+            let char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash &= hash;
+        }
+    }
+    return hash.toString(16);
 }
-
+  
 export { hashString }
