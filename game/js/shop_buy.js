@@ -45,6 +45,7 @@ shopSections.forEach(shopSection => {
             button.setAttribute('data-item-id', newId);
             button.addEventListener('click', () => {
                 console.log(`Clicked button to buy ${oreNameCapitalized}`);
+                openPopup(oreNameCapitalized, "Buy This?", imageUrl)
             });
         
             // Update the h3 text to the ore name
@@ -69,3 +70,58 @@ shopSections.forEach(shopSection => {
       // Call the function once to update the grid items on page load
       updateGridItems();
 });
+
+const closePopupBtn = document.getElementById("close-btn-id").addEventListener("click", () => {
+    closePopup()
+})
+
+function openPopup(title, message, imageSrc) {
+    // Get the popup and its content
+    var popup = document.querySelector('.popup');
+  
+    // Show the popup
+    popup.style.display = 'block';
+  
+    // Set the title, message, and image based on the arguments
+    document.getElementById('popup-title').textContent = title;
+    document.getElementById('popup-message').textContent = message;
+    document.getElementById('popup-img').src = imageSrc;
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            closePopup();
+        }
+    }
+}
+
+function closePopup() {
+    // Get the popup
+    var popup = document.querySelector('.popup');
+  
+    // Hide the popup
+    popup.style.display = 'none';
+}
+
+const increase = document.getElementById("input-number-increment-id")
+const decrease = document.getElementById("input-number-decrement-id")
+
+increase.addEventListener("click", () => {
+    increaseValue();
+    console.log("+1")
+})
+
+decrease.addEventListener("click", () => {
+    decreaseValue();
+    console.log("-1")
+})
+
+function increaseValue() {
+    const inputValueElement = document.getElementById("input-number-id")
+    inputValueElement.value = parseInt(inputValueElement.value) + 1;
+}
+
+function decreaseValue() {
+    const inputValueElement = document.getElementById("input-number-id")
+    if (parseInt(inputValueElement.value) > 1) {
+        inputValueElement.value = parseInt(inputValueElement.value) - 1;
+    }
+}

@@ -47,7 +47,8 @@ const stocks = [
     changeList: [],
     volatility: 1.5,
     change: 0,
-    shares: 0 
+    shares: 0,
+    index: 0,
     },
     {
     planet: "Novaria",
@@ -59,7 +60,8 @@ const stocks = [
     changeList: [],
     volatility: 1,
     change: 0,
-    shares: 0
+    shares: 0,
+    index: 1,
     },
     {
     planet: "Novaria",
@@ -71,7 +73,8 @@ const stocks = [
     changeList: [],
     volatility: 1,
     change: 0,
-    shares: 0
+    shares: 0,
+    index: 2,
     },
     {
     planet: "Aethera",
@@ -83,7 +86,8 @@ const stocks = [
     changeList: [],
     volatility: 0.8,
     change: 0,
-    shares: 0
+    shares: 0,
+    index: 3,
     },
     {
     planet: "Aethera",
@@ -95,7 +99,8 @@ const stocks = [
     changeList: [],
     volatility: 1,
     change: 0,
-    shares: 0
+    shares: 0,
+    index: 4,
     },
     {
     planet: "Aethera",
@@ -107,7 +112,8 @@ const stocks = [
     changeList: [],
     volatility: 1,
     change: 0,
-    shares: 0
+    shares: 0,
+    index: 5,
     },
     {
     planet: "Helion",
@@ -119,7 +125,8 @@ const stocks = [
     changeList: [],
     volatility: 2,
     change: 0,
-    shares: 0
+    shares: 0,
+    index: 6,
     },
     {
     planet: "Helion",
@@ -131,7 +138,8 @@ const stocks = [
     changeList: [],
     volatility: 1,
     change: 0,
-    shares: 0
+    shares: 0,
+    index: 7,
     },
     {
     planet: "Helion",
@@ -143,7 +151,8 @@ const stocks = [
     changeList: [],
     volatility: 2,
     change: 0,
-    shares: 0
+    shares: 0,
+    index: 8,
     }
 ];
 
@@ -388,23 +397,7 @@ updateBalance();
 updatePrices();
 setInterval(updatePrices, 2000);
 
-const backbutton = document.getElementById("back");
-
-backbutton.addEventListener("click", () => {
-    const mainpage = window.location.href;
-    let splitUrl = mainpage.split("/");
-    let newUrl = splitUrl.slice(0, 3).join("/")+"/";
-    console.log(mainpage);
-    console.log(newUrl);
-
-    const planetpage = `game/html/planets/map_${localPlayerDict.planet}.html`
-
-    window.location.href = newUrl+planetpage;
-
-});
-
-function addNewEventListener(stockIndex) {
-    let stock = stocks[stockIndex];
+stocks.forEach(stock => {
     const inputValueElement = document.getElementById(stock.name.toLowerCase()+"-input-number-id")
     const buyall = document.getElementById(stock.name.toLowerCase() + "-stock-button-all-buy")
     const sellall = document.getElementById(stock.name.toLowerCase() + "-stock-button-all-sell")
@@ -412,38 +405,35 @@ function addNewEventListener(stockIndex) {
     const sell = document.getElementById(stock.name.toLowerCase() + "-stock-button-sell")
     const increase = document.getElementById(stock.name.toLowerCase() + "-input-number-increment-id")
     const decrease = document.getElementById(stock.name.toLowerCase() + "-input-number-decrement-id")
+    console.log("Event")
 
     buyall.addEventListener("click", () => {
-        buyStock(stockIndex, 0);
+        buyStock(stock.index, 0);
+        console.log("Buy All")
     })
 
     sellall.addEventListener("click", () => {
-        sellStock(stockIndex, 0);
+        sellStock(stock.index, 0);
+        console.log("")
     })
 
     buy.addEventListener("click", () => {
-        buyStock(stockIndex, parseInt(inputValueElement.textContent));
+        buyStock(stock.index, parseInt(inputValueElement.textContent));
+        console.log("")
     })
 
     sell.addEventListener("click", () => {
-        sellStock(stockIndex, parseInt(inputValueElement.textContent));
+        sellStock(stock.index, parseInt(inputValueElement.textContent));
+        console.log("")
     })
 
     increase.addEventListener("click", () => {
-        increaseValue(stockIndex);
+        increaseValue(stock.index);
+        console.log("")
     })
 
     decrease.addEventListener("click", () => {
-        decreaseValue(stockIndex);
+        decreaseValue(stock.index);
+        console.log("")
     })
-}
-
-addNewEventListener(0);
-addNewEventListener(1);
-addNewEventListener(2);
-addNewEventListener(3);
-addNewEventListener(4);
-addNewEventListener(5);
-addNewEventListener(6);
-addNewEventListener(7);
-addNewEventListener(8);
+})
